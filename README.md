@@ -11,6 +11,8 @@
 
 ## Endpoints
 
+> [MERN](https://dbdiagram.io/d/msdigital-db-66eb9443a0828f8aa6531938)
+
 All endpoints are based on REST, so, to create a new resource you must to use POST, to list GET and so on. In addition
 the endpoints are in singular as standard. Server listen on `http://localhost:<port>/api/<endpoint>`
 
