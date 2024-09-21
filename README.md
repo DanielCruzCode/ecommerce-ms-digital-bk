@@ -11,6 +11,9 @@
 
 ## Endpoints
 
+All endpoints are based on REST, so, to create a new resource you must to use POST, to list GET and so on.
+For time reasons only the endpoints list below are available:
+
 * Product
 * User
 * Cart items
@@ -25,6 +28,11 @@ that you could execute.
 * Set a suite test about use cases.
 * Add a dependency container for improve testability.
 * Change `.env` to secret manager service for better security.
+* Add multi-environment with `.env.development` and `.env.production` files.
+* Add auth token validation (Protected routes by middleware).
+* Add database migrations.
+* Add multilanguage support for clients.
+* Finish all REST operations (depends on business unit).
 
 ## Error handling
 
