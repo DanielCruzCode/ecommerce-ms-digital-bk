@@ -10,9 +10,10 @@ export async function createCartService({ userId }: { userId: number }) {
 		return await repository.create(userId);
 	} catch (reason) {
 		const error = reason as Error;
-		ErrorHandler.controlled({
+		ErrorHandler.caughtControlled({
+			error,
 			message: "CART_NOT_CREATED",
-			name: error.name,
+			name: "CART_NOT_CREATED",
 		});
 	}
 }

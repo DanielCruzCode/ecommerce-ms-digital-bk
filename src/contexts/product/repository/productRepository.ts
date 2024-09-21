@@ -20,4 +20,15 @@ export class ProductRepository {
 
 		return this.repository.save(product);
 	}
+
+	findById(productId: number) {
+		return this.repository.findOneBy({ id: productId });
+	}
+
+	increaseOrDecreaseStock(product: ProductEntity, quantity: number) {
+		return this.repository.update(
+			{ id: product.id },
+			{ stock: product.stock + quantity },
+		);
+	}
 }

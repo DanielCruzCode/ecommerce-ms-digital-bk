@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "type": "PRODUCT",
   "price": 9.99,
-  "stock": 2,
+  "stock": 60,
   "thumbnail": "https://cdn.fake.com/img/product-1.png",
   "description": "Product Description 1"
 }
@@ -17,7 +17,7 @@ Content-Type: application/json
 {
   "type": "EVENT",
   "price": 39.99,
-  "stock": 12,
+  "stock": 20,
   "thumbnail": "https://cdn.fake.com/img/product-3.png",
   "description": "Event Description 2"
 }

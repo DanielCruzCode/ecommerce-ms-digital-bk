@@ -10,6 +10,13 @@ export async function createUserService(payload: User) {
 		const source = AppDataSource.getRepository(UserEntity);
 		const repository = new UserRepository(source);
 		const user = await repository.create(payload);
+
+		if (!user) {
+			ErrorHandler.generateControlled({
+				message: "USER_NOT_CREATED",
+				name: "USER_NOT_CREATED",
+			});
+		}
 		const cart = await createCartService({ userId: user.id });
 
 		return {
@@ -18,9 +25,10 @@ export async function createUserService(payload: User) {
 		};
 	} catch (reason) {
 		const error = reason as Error;
-		ErrorHandler.controlled({
+		ErrorHandler.caughtControlled({
+			error,
 			message: "USER_NOT_CREATED",
-			name: error.name,
+			name: "USER_NOT_CREATED",
 		});
 	}
 }

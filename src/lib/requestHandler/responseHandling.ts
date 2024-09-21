@@ -1,6 +1,4 @@
 import type { Response } from "express";
-
-import { CustomError } from "./ErrorHandler";
 import type { BaseResponse, HeaderType } from "./responseTypes";
 
 export function responseSender(
@@ -16,10 +14,8 @@ export function responseSender(
 	return res.status(payload.code).send(payload);
 }
 
-export function errorSender(
-	res: Response<BaseResponse>,
-	payload: CustomError | unknown,
-) {
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export function errorSender(res: Response<BaseResponse>, error: any) {
 	const defaultServerErrorPayload: BaseResponse = {
 		ok: false,
 		code: 500,
@@ -27,27 +23,10 @@ export function errorSender(
 		message: "Server error - No controlled",
 	};
 
-	if (!(payload instanceof CustomError)) {
-		console.log(
-			"🚧🚧🚧 Warning! Expected CustomError instance that you must provide 😥 ",
-		);
-
-		if (payload instanceof Error) {
-			console.log("ERROR-NOT-CONTROLLED: ", payload.name);
-		}
-		console.log("ERROR-NOT-CONTROLLED: ", payload);
-
-		return res
-			.status(defaultServerErrorPayload.code)
-			.json(defaultServerErrorPayload);
-	}
-
-	console.log("ERROR-CONTROLLED: ", payload.name);
-
-	return res.status(payload.code).json({
-		ok: payload.ok,
-		code: payload.code,
-		status: payload.status,
-		message: payload.message,
+	return res.status(error?.code ?? defaultServerErrorPayload.code).json({
+		ok: error?.ok ?? defaultServerErrorPayload.ok,
+		code: error?.code ?? defaultServerErrorPayload.code,
+		status: error?.status ?? defaultServerErrorPayload.status,
+		message: error?.message ?? defaultServerErrorPayload.message,
 	});
 }

@@ -1,0 +1,19 @@
+### Create cart items
+POST http://localhost:3001/api/cart
+Content-Type: application/json
+
+{
+  "cartId": 1,
+  "items": [
+    {
+      "productId": 4,
+      "quantity": 10
+    },
+    {
+      "productId": 5,
+      "quantity": 10
+    }
+  ]
+}
+
+###

@@ -4,6 +4,7 @@ import { DB_CONFIG } from "../../../../config";
 import { ProductEntity } from "./entity/ProductEntity";
 import { UserEntity } from "./entity/UserEntity";
 import { CartEntity } from "./entity/cartEntity";
+import { CartItemEntity } from "./entity/cartItemEntity";
 
 export const AppDataSource = new DataSource({
 	type: "mysql",
@@ -14,7 +15,7 @@ export const AppDataSource = new DataSource({
 	database: DB_CONFIG.DB_NAME,
 	synchronize: false,
 	logging: true,
-	entities: [UserEntity, CartEntity, ProductEntity],
+	entities: [UserEntity, CartEntity, ProductEntity, CartItemEntity],
 	migrations: [],
 	subscribers: [],
 });

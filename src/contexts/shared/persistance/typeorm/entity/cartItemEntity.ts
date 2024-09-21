@@ -1,9 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import type { CartItem } from "../../../../cartItem/domain/cartItem";
+import { CartEntity } from "./cartEntity";
 
-@Entity()
+@Entity({ name: "cart_item" })
 export class CartItemEntity implements CartItem {
-	@PrimaryGeneratedColumn("increment")
+	@PrimaryGeneratedColumn({ name: "id", type: "integer" })
 	id: number;
 
 	@Column({ name: "cartId", type: "integer" })
@@ -14,4 +15,10 @@ export class CartItemEntity implements CartItem {
 
 	@Column({ name: "quantity", type: "integer" })
 	quantity: number;
+
+	@ManyToOne(
+		() => CartEntity,
+		(cart) => cart.cartItem,
+	)
+	cart: CartEntity;
 }

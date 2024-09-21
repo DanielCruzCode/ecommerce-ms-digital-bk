@@ -1,0 +1,4 @@
+### List all carts
+GET http://localhost:3001/api/cart
+
+###

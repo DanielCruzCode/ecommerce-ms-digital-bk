@@ -10,8 +10,8 @@ export class CartItemRepository {
 		this.repository = repository;
 	}
 
-	async create(cart: Cart, items: Array<Omit<CartItem, "cartId" | "id">>) {
-		const payload: Array<Omit<CartItem, "id">> = items.map((it) => ({
+	async create(cart: Cart, items: Array<Omit<CartItem, "cartId">>) {
+		const payload: Array<CartItem> = items.map((it) => ({
 			cartId: cart.id,
 			productId: it.productId,
 			quantity: it.quantity,

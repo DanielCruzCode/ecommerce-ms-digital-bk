@@ -11,9 +11,10 @@ export async function createProductService(payload: Product) {
 		return await repository.create(payload);
 	} catch (reason) {
 		const error = reason as Error;
-		ErrorHandler.controlled({
+		ErrorHandler.caughtControlled({
+			error,
 			message: "PRODUCT_NOT_CREATED",
-			name: error.message,
+			name: "PRODUCT_NOT_CREATED",
 		});
 	}
 }

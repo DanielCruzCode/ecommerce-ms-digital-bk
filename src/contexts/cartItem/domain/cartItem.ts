@@ -1,5 +1,5 @@
 export interface CartItem {
-	id: number;
+	id?: number;
 	productId: number;
 	cartId: number;
 	quantity: number;

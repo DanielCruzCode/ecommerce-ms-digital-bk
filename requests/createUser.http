@@ -3,6 +3,17 @@ POST http://localhost:3001/api/user
 Content-Type: application/json
 
 {
+  "firstName": "Daniel",
+  "lastName": "Cruz"
+}
+
+###
+
+### Bad request by required lastname
+POST http://localhost:3001/api/user
+Content-Type: application/json
+
+{
   "firstName": "Daniel"
 }
 

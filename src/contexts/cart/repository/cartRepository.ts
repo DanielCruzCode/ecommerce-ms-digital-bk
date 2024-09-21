@@ -12,4 +12,16 @@ export class CartRepository {
 		const cart = this.repository.create({ userId });
 		return this.repository.save(cart);
 	}
+
+	findById(cartId: number) {
+		return this.repository.findOneBy({ id: cartId });
+	}
+
+	list() {
+		return this.repository.find({
+			relations: {
+				cartItem: true,
+			},
+		});
+	}
 }
