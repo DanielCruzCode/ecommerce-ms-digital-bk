@@ -1,7 +1,7 @@
-import type {Repository} from "typeorm";
-import type {Cart} from "../../cart/domain/cart";
-import type {CartItemEntity} from "../../shared/persistance/typeorm/entity/cartItemEntity";
-import type {CartItem} from "../domain/cartItem";
+import type { Repository } from "typeorm";
+import type { Cart } from "../../cart/domain/cart";
+import type { CartItemEntity } from "../../shared/persistance/typeorm/entity/cartItemEntity";
+import type { CartItem } from "../domain/cartItem";
 
 export class CartItemRepository {
 	private repository: Repository<CartItemEntity>;

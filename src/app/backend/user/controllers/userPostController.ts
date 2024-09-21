@@ -1,9 +1,12 @@
-import type {Response} from "express";
-import {createUserService} from "../../../../contexts/user/services/createUserService";
-import {errorSender, responseSender} from "../../../../lib/requestHandler";
-import {type BaseResponse, HTTP_CODES,} from "../../../../lib/requestHandler/responseTypes";
-import {SUCCESS_MSG} from "../lang/messages";
-import type {CreateUserRequest} from "../types";
+import type { Response } from "express";
+import { createUserService } from "../../../../contexts/user/services/createUserService";
+import { errorSender, responseSender } from "../../../../lib/requestHandler";
+import {
+	type BaseResponse,
+	HTTP_CODES,
+} from "../../../../lib/requestHandler/responseTypes";
+import { SUCCESS_MSG } from "../lang/messages";
+import type { CreateUserRequest } from "../types";
 
 export default {
 	async create(req: CreateUserRequest, res: Response<BaseResponse>) {

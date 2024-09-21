@@ -1,12 +1,15 @@
 import * as bodyParser from "body-parser";
-import type {Request, Response} from "express";
+import type { Request, Response } from "express";
 import * as express from "express";
-import {ValidationError} from "express-validation";
-import {APP_CONFIG} from "./config";
-import {AppDataSource} from "./contexts/shared/persistance/typeorm/data-source";
-import type {CustomErrorType} from "./lib/requestHandler";
-import {type BaseResponse, HTTP_CODES,} from "./lib/requestHandler/responseTypes";
-import {mainRouter} from "./router";
+import { ValidationError } from "express-validation";
+import { APP_CONFIG } from "./config";
+import { AppDataSource } from "./contexts/shared/persistance/typeorm/data-source";
+import type { CustomErrorType } from "./lib/requestHandler";
+import {
+	type BaseResponse,
+	HTTP_CODES,
+} from "./lib/requestHandler/responseTypes";
+import { mainRouter } from "./router";
 
 // Initialize Database
 AppDataSource.initialize()

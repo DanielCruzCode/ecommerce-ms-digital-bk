@@ -1,8 +1,8 @@
-import {ErrorHandler} from "../../../lib/requestHandler";
-import {AppDataSource} from "../../shared/persistance/typeorm/data-source";
-import {ProductEntity} from "../../shared/persistance/typeorm/entity/ProductEntity";
-import type {Product} from "../domain/product";
-import {ProductRepository} from "../repository/productRepository";
+import { ErrorHandler } from "../../../lib/requestHandler";
+import { AppDataSource } from "../../shared/persistance/typeorm/data-source";
+import { ProductEntity } from "../../shared/persistance/typeorm/entity/ProductEntity";
+import type { Product } from "../domain/product";
+import { ProductRepository } from "../repository/productRepository";
 
 export async function createProductService(payload: Product) {
 	try {

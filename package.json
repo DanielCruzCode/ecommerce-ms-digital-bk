@@ -22,6 +22,7 @@
 	},
 	"scripts": {
 		"start": "dotenvx run -- ts-node src/index.ts",
+		"format": "npx @biomejs/biome format --write .",
 		"typeorm": "typeorm-ts-node-commonjs"
 	},
 	"engines": {

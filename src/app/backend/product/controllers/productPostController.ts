@@ -1,9 +1,12 @@
-import type {Response} from "express";
-import {createProductService} from "../../../../contexts/product/services/createProductService";
-import {errorSender, responseSender} from "../../../../lib/requestHandler";
-import {type BaseResponse, HTTP_CODES,} from "../../../../lib/requestHandler/responseTypes";
-import {SUCCESS_MSG} from "../lang/messages";
-import type {CreateProductRequest} from "../types";
+import type { Response } from "express";
+import { createProductService } from "../../../../contexts/product/services/createProductService";
+import { errorSender, responseSender } from "../../../../lib/requestHandler";
+import {
+	type BaseResponse,
+	HTTP_CODES,
+} from "../../../../lib/requestHandler/responseTypes";
+import { SUCCESS_MSG } from "../lang/messages";
+import type { CreateProductRequest } from "../types";
 
 export default {
 	async create(req: CreateProductRequest, res: Response<BaseResponse>) {
