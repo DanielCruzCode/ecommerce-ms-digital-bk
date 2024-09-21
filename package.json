@@ -1,26 +1,31 @@
 {
-   "name": "ms-digital",
-   "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
-   "type": "commonjs",
-   "devDependencies": {
-      "@biomejs/biome": "1.9.1",
-      "@types/node": "16.11.10",
-      "ts-node": "10.9.1",
-      "typescript": "4.5.2"
-   },
-   "dependencies": {
-      "@dotenvx/dotenvx": "1.14.1",
-      "mysql2": "3.11.3",
-      "reflect-metadata": "0.1.13",
-      "typeorm": "0.3.20"
-   },
-   "scripts": {
-      "start": "dotenvx run -- ts-node src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
-   },
-   "engines": {
-      "npm": ">=8.0.0 <9.0.0",
-      "node": ">=16.0.0 <17.0.0"
-   }
+	"name": "ms-digital",
+	"version": "0.0.1",
+	"description": "Awesome project developed with TypeORM.",
+	"type": "commonjs",
+	"devDependencies": {
+		"@biomejs/biome": "1.9.1",
+		"@types/express": "4.17.21",
+		"@types/node": "16.11.10",
+		"ts-node": "10.9.1",
+		"typescript": "4.5.2"
+	},
+	"dependencies": {
+		"@dotenvx/dotenvx": "1.14.1",
+		"body-parser": "1.20.3",
+		"chalk": "4.1.1",
+		"express": "4.21.0",
+		"express-validation": "4.1.1",
+		"mysql2": "3.11.3",
+		"reflect-metadata": "0.1.13",
+		"typeorm": "0.3.20"
+	},
+	"scripts": {
+		"start": "dotenvx run -- ts-node src/index.ts",
+		"typeorm": "typeorm-ts-node-commonjs"
+	},
+	"engines": {
+		"npm": ">=8.0.0 <9.0.0",
+		"node": ">=16.0.0 <17.0.0"
+	}
 }

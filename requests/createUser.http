@@ -1,0 +1,9 @@
+### Create new user
+POST http://localhost:3001/api/user
+Content-Type: application/json
+
+{
+  "firstName": "Daniel"
+}
+
+###

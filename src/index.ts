@@ -1,19 +1,60 @@
-import { AppDataSource } from "./contexts/shared/persistance/typeorm/data-source"
-import { User } from "./contexts/shared/persistance/typeorm/entity/User"
+import * as bodyParser from "body-parser";
+import type {Request, Response} from "express";
+import * as express from "express";
+import {ValidationError} from "express-validation";
+import {APP_CONFIG} from "./config";
+import {AppDataSource} from "./contexts/shared/persistance/typeorm/data-source";
+import type {CustomErrorType} from "./lib/requestHandler";
+import {type BaseResponse, HTTP_CODES,} from "./lib/requestHandler/responseTypes";
+import {mainRouter} from "./router";
 
-AppDataSource.initialize().then(async () => {
+// Initialize Database
+AppDataSource.initialize()
+	.then(async () => {
+		console.log("Data Source has been initialized!");
+	})
+	.catch((err) => {
+		console.error("Error during Data Source initialization:", err);
+	});
 
-    console.log("Inserting a new user into the database...")
-    const user = new User()
-    user.firstName = "Timber"
-    user.lastName = "Saw"
-    await AppDataSource.manager.save(user)
-    console.log("Saved a new user with id: " + user.id)
+const app = express();
+app.use(bodyParser.json());
 
-    console.log("Loading users from the database...")
-    const users = await AppDataSource.manager.find(User)
-    console.log("Loaded users: ", users)
+// Routes
+app.use("/api", mainRouter);
 
-    console.log("Here you can setup and run express / fastify / any other framework.")
+// Route validator error
+app.use((err: unknown, req: Request, res: Response<BaseResponse>, next) => {
+	let errorPayload: CustomErrorType = {
+		ok: false,
+		code: HTTP_CODES.INTERNAL_SERVER_ERROR,
+		status: "INTERNAL_SERVER_ERROR",
+		message: "Server error - No controlled",
+		name: "INTERNAL_SERVER_ERROR",
+	};
 
-}).catch(error => console.log(error))
+	if (err instanceof ValidationError) {
+		const validationErrorList = err.details.body.map((it) => it.message);
+
+		errorPayload = {
+			ok: false,
+			code: HTTP_CODES.BAD_REQUEST,
+			status: "BAD_REQUEST",
+			message: "Parameter not valid",
+			name: "PARAMETER_VALIDATION",
+			data: validationErrorList,
+		};
+	}
+
+	return res.status(errorPayload.code).json(errorPayload);
+});
+
+// Health check
+app.get("/health", (req, res) => {
+	res.send("success");
+});
+
+// Start server
+app.listen(APP_CONFIG.PORT, () => {
+	console.log(`Server listening on ${APP_CONFIG.PORT} 🚀`);
+});
