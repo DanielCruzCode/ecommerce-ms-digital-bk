@@ -13,5 +13,6 @@ router.post(
 );
 
 router.get("/", cartGetController.list);
+router.get("/summary/:id", cartGetController.summary);
 
 export const cartRouter = router;

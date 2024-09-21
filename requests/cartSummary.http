@@ -1,0 +1,5 @@
+### Generate Cart Summary
+GET http://localhost:3001/api/cart/summary/1
+Content-Type: application/json
+
+###

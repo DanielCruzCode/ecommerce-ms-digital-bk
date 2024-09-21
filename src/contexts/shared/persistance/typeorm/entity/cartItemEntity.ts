@@ -1,5 +1,12 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+	Column,
+	Entity,
+	ManyToOne,
+	OneToMany,
+	PrimaryGeneratedColumn,
+} from "typeorm";
 import type { CartItem } from "../../../../cartItem/domain/cartItem";
+import { ProductEntity } from "./ProductEntity";
 import { CartEntity } from "./cartEntity";
 
 @Entity({ name: "cart_item" })
@@ -21,4 +28,10 @@ export class CartItemEntity implements CartItem {
 		(cart) => cart.cartItem,
 	)
 	cart: CartEntity;
+
+	@OneToMany(
+		() => ProductEntity,
+		(product) => product.cartItem,
+	)
+	product: ProductEntity;
 }

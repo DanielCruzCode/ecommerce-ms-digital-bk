@@ -7,3 +7,9 @@ export type AddItemToCartRequest = Request & {
 		items: Array<Omit<CartItem, "cartId">>;
 	};
 };
+
+export type CartSummaryRequest = Request & {
+	params: {
+		id: number;
+	};
+};

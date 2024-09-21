@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import type { Product, ProductType } from "../../../../product/domain/product";
+import { CartItemEntity } from "./cartItemEntity";
 
 @Entity({ name: "product" })
 export class ProductEntity implements Product {
@@ -15,4 +16,10 @@ export class ProductEntity implements Product {
 	thumbnail: string;
 	@Column({ name: "description" })
 	description: string;
+
+	@ManyToOne(
+		() => CartItemEntity,
+		(cartItem) => cartItem.product,
+	)
+	cartItem: CartItemEntity;
 }
