@@ -11,12 +11,19 @@
 
 ## Endpoints
 
-All endpoints are based on REST, so, to create a new resource you must to use POST, to list GET and so on.
-For time reasons only the endpoints list below are available:
+All endpoints are based on REST, so, to create a new resource you must to use POST, to list GET and so on. In addition
+the endpoints are in singular as standard. Server listen on `http://localhost:<port>/api/<endpoint>`
 
-* Product
-* User
-* Cart items
+> For time reasons only the endpoints list below are available
+
+- **Cart "/cart"**
+    - POST  "/" Add new item to cart.
+    - GET   "/" List all carts.
+    - GET   "/summary/:id" Cart summary with all items, subtotal and total.
+- **User "/user"**
+    - POST "/" Create new user and as a side effect a new cart.
+- **Product "/product"**
+    - POST "/" Create new product.
 
 ## Request folder (Jetbrains only)
 
